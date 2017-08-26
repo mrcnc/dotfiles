@@ -16,3 +16,8 @@ alias gco='git checkout'
 alias gcm='git commit -m'
 
 export EDITOR=vim
+
+# golang settings
+export GOPATH=/Users/mcenac/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN
