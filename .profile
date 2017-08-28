@@ -24,3 +24,6 @@ export EDITOR=vim
 export GOPATH=/Users/mcenac/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
