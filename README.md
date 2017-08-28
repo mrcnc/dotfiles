@@ -1,1 +1,1 @@
-This repo will hold dotfiles that I use for development
+This repo holds dotfiles that I use for development
