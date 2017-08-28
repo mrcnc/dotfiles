@@ -7,6 +7,7 @@ alias ls='ls -hG'
 alias ll='ls -al'
 alias h='history'
 alias grep='grep --color=auto'
+
 alias gs='git status'
 alias gp='git pull'
 alias gp='git pull --prune'
@@ -15,9 +16,11 @@ alias gf='git fetch --all --prune'
 alias gco='git checkout'
 alias gcm='git commit -m'
 
+alias dc='docker-compose'
+
+# environment variables
 export EDITOR=vim
 
-# golang settings
 export GOPATH=/Users/mcenac/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
