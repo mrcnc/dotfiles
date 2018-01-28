@@ -15,6 +15,7 @@ alias gp='git pull'
 alias gp='git pull --prune'
 alias gd='git diff'
 alias gf='git fetch --all --prune'
+alias gb='git branch'
 alias gco='git checkout'
 alias gcm='git commit -m'
 
