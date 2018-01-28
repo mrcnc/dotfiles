@@ -1,6 +1,8 @@
 # prompt
-source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
-PS1="\[\e[1;32m\]\u@\h\[\e[1;34m\] \w\[\e[0m\]\$(__git_ps1)\[\e[1;34m\] \n$\[\e[0m\] "
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+PS1="\[\e[1;32m\]\u@\h\[\e[1;34m\] \w\[\e[0m\]\$(parse_git_branch)\[\e[1;34m\] \n$\[\e[0m\] "
 
 # aliases
 alias ls='ls -hG'
