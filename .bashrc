@@ -10,8 +10,8 @@ alias ll='ls -al'
 alias h='history'
 alias grep='grep --color=auto'
 alias gs='git status'
-alias gp='git pull --prune'
 alias gd='git diff'
+alias gp='git push'
 alias gf='git fetch --all --prune'
 alias gb='git branch'
 alias gco='git checkout'
@@ -20,3 +20,5 @@ alias dc='docker-compose'
 
 # environment variables
 export EDITOR=vim
+
+export PATH=$PATH:"/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
