@@ -1,55 +1,73 @@
-filetype plugin indent on
-syntax on
-set smartindent
-set tabstop=4
-set shiftwidth=4
-set expandtab
+" Maps leader key to comma ,
+let mapleader = ","
 
-""
-"" Janus setup
-""
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" Define paths
-if has('win32') || has('win64') || has('win32unix')
-  let g:janus_path = expand("~/.vim/janus/vim")
-  let g:janus_vim_path = expand("~/.vim/janus/vim")
-else
-  let g:janus_path = escape(fnamemodify(resolve(expand("<sfile>:p")), ":h"), ' ')
-  let g:janus_vim_path = escape(fnamemodify(resolve(expand("<sfile>:p" . "vim")), ":h"), ' ')
-endif
-let g:janus_custom_path = expand("~/.janus")
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" Source janus's core
-exe 'source ' . g:janus_vim_path . '/core/before/plugin/janus.vim'
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+" add your plugins below
+"Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-sleuth'
+Plugin 'fatih/vim-go'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+Plugin 'elzr/vim-json'
+"Plugin 'scrooloose/syntastic'
+Plugin 'hashivim/vim-terraform'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'wincent/command-t'
 
-" You should note that groups will be processed by Pathogen in reverse
-" order they were added.
-call janus#add_group("tools")
-call janus#add_group("langs")
-call janus#add_group("colors")
-
-""
-"" Customisations
-""
-
-if filereadable(expand("~/.vimrc.before"))
-  source ~/.vimrc.before
-endif
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 
-" Disable plugins prior to loading pathogen
-exe 'source ' . g:janus_vim_path . '/core/plugins.vim'
+" Display line numbers
+set number
 
-""
-"" Pathogen setup
-""
+" UTF-8 as default encoding
+set encoding=utf8
 
-" Load all groups, custom dir, and janus core
-call janus#load_pathogen()
+" Wrap git commit messages at 72 characters
+au FileType gitcommit set tw=72
 
-" .vimrc.after is loaded after the plugins have loaded
+" Toggle NERDTree window with <leader>n 
+nnoremap <leader>n :NERDTreeToggle<Enter>
 
-" automatically set paste mode
+" Hide .pyc in nerdtree
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+
+" Run 'terraform fmt' when writing config files
+let g:terraform_fmt_on_save = 1
+
+" make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
+
+"Set tabs/indents/width on other files
+au BufNewFile,BufRead *.js,*.html,*.css,*.sql
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+
+" Automatically set paste mode
 let &t_SI .= "\<Esc>[?2004h"
 let &t_EI .= "\<Esc>[?2004l"
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
@@ -59,5 +77,3 @@ function! XTermPasteBegin()
   set paste
   return ""
 endfunction
-
-let g:go_autodetect_gopath = 0
