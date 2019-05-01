@@ -1,0 +1,19 @@
+[user]
+  name = Marc Cenac
+  email = marc.j.cenac@gmail.com
+[core]
+  excludesfile = /Users/mcenac/.gitignore_global
+  whitespace = warn
+[branch]
+  autosetuprebase = always
+[push]
+  default = current
+[rerere]
+  enabled = true
+[diff "sopsdiffer"]
+  textconv = sops -d
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
