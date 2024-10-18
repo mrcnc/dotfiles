@@ -17,6 +17,10 @@ alias gb='git branch'
 alias gco='git checkout'
 alias gcm='git commit -m'
 alias dc='docker-compose'
+alias gpo='git pull origin'
+alias gpom='git pull origin main'
+alias gpoma='git pull origin master'
+
 
 # environment variables
 export EDITOR=vim
